@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.midnight.cncleanse;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -13,9 +13,9 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(ExampleMod.ID)
-public class ExampleMod {
-    public static final String ID = "examplemod";
+@Mod(CnCleanse.ID)
+public class CnCleanse {
+    public static final String ID = "cncleanse";
     public static final Logger LOGGER = LogManager.getLogger(ID);
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(ID)
@@ -24,7 +24,7 @@ public class ExampleMod {
                             .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
             );
 
-    public ExampleMod(IEventBus modBus) {
+    public CnCleanse(IEventBus modBus) {
         REGISTRATE.registerEventListeners(modBus);
 
         AllCreativeModeTabs.register();
