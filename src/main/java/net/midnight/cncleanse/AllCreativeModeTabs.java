@@ -4,19 +4,19 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class AllCreativeModeTabs {
 
     public static final RegistryEntry<CreativeModeTab, CreativeModeTab> MAIN_TAB =
             CnCleanse.REGISTRATE.defaultCreativeTab("main_tab", builder ->
                     builder
-                            .title(Component.translatable("itemGroup." + CnCleanse.ID))
-                            .icon(() -> new ItemStack(Items.HONEYCOMB))  // Replace with your own icon
+                            .title(Component.literal("Clean n' Cleanse"))
+                            .icon(() -> new ItemStack(AllItems.YELLOW_SPONGE.get()))
                             .build()
             ).register();
 
     public static void register() {
-        // Force class loading to trigger Registrate calls
+        CnCleanse.REGISTRATE.setCreativeTab(MAIN_TAB);
+        CnCleanse.LOGGER.info("Register Creative Tab...");
     }
 }

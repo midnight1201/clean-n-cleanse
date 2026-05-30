@@ -21,11 +21,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
+import java.util.function.Supplier;
+
 public class SpongeItem extends Item {
 
-    private final Item wetItem;
+    private final Supplier<Item> wetItem;
 
-    public SpongeItem(Properties properties, Item wetItem) {
+    public SpongeItem(Properties properties, Supplier<Item> wetItem) {
         super(properties);
         this.wetItem = wetItem;
     }
@@ -54,7 +56,7 @@ public class SpongeItem extends Item {
                             level.playSound(player, player.getX(), player.getY(), player.getZ(),
                                     SoundEvents.SPONGE_ABSORB, SoundSource.NEUTRAL, 1.0F, 1.0F);
                             level.gameEvent(player, GameEvent.FLUID_PICKUP, blockPos);
-                            ItemStack transformedItem = new ItemStack(wetItem);
+                            ItemStack transformedItem = new ItemStack(wetItem.get());
 
                             return InteractionResultHolder.sidedSuccess(this.turnDryIntoWet(itemstack, player,
                                     transformedItem), level.isClientSide());

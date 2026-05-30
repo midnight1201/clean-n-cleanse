@@ -26,11 +26,9 @@ public class CnCleanse {
 
     public CnCleanse(IEventBus modBus) {
         REGISTRATE.registerEventListeners(modBus);
-
         AllCreativeModeTabs.register();
-        REGISTRATE.setCreativeTab(AllCreativeModeTabs.MAIN_TAB);
-        AllItems.register();
         AllBlocks.register();
+        AllItems.register();
 
         modBus.addListener(this::onCommonSetup);
         modBus.addListener(this::onClientSetup);

@@ -8,17 +8,15 @@ import net.minecraft.world.level.block.Block;
 
 public class AllTags {
     public static final class Blocks {
-        public static final TagKey<Block> SPONGE_BLOCKS =
-                BlockTags.create(CnCleanse.asResource("sponge_blocks"));
-        public static final TagKey<Block> WET_SPONGE_BLOCKS =
-                BlockTags.create(CnCleanse.asResource("wet_sponge_blocks"));
+        public static final TagKey<Block> SPONGE_BLOCKS = BlockTags.create(CnCleanse.asResource("sponge_blocks"));
+        public static final TagKey<Block> WET_SPONGE_BLOCKS = BlockTags.create(CnCleanse.asResource("wet_sponge_blocks"));
         private Blocks() {}
     }
     public static final class Items {
-        public static final TagKey<Item> SPONGE_BLOCKS =
-                ItemTags.create(CnCleanse.asResource("sponge_blocks"));
-        public static final TagKey<Item> WET_SPONGE_BLOCKS =
-                ItemTags.create(CnCleanse.asResource("wet_sponge_blocks"));
+        public static final TagKey<Item> SPONGE_BLOCKS = ItemTags.create(CnCleanse.asResource("sponge_blocks"));
+        public static final TagKey<Item> WET_SPONGE_BLOCKS = ItemTags.create(CnCleanse.asResource("wet_sponge_blocks"));
+        public static final TagKey<Item> SPONGE_ITEMS = ItemTags.create(CnCleanse.asResource("sponge_items"));
+        public static final TagKey<Item> WET_SPONGE_ITEMS = ItemTags.create(CnCleanse.asResource("wet_sponge_items"));
         private Items() {}
     }
     private AllTags() {}

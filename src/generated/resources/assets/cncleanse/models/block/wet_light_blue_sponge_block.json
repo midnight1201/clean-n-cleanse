@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cncleanse:block/wet_light_blue_sponge_block"
+  }
+}

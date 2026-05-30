@@ -1,0 +1,21 @@
+{
+  "block.cncleanse.light_blue_sponge_block": "Light Blue Sponge Block",
+  "block.cncleanse.lime_sponge_block": "Lime Sponge Block",
+  "block.cncleanse.red_sponge_block": "Red Sponge Block",
+  "block.cncleanse.wet_light_blue_sponge_block": "Wet Light Blue Sponge Block",
+  "block.cncleanse.wet_lime_sponge_block": "Wet Lime Sponge Block",
+  "block.cncleanse.wet_red_sponge_block": "Wet Red Sponge Block",
+  "block.cncleanse.wet_white_sponge_block": "Wet White Sponge Block",
+  "block.cncleanse.white_sponge_block": "White Sponge Block",
+  "item.cncleanse.light_blue_sponge": "Light Blue Sponge",
+  "item.cncleanse.lime_sponge": "Lime Sponge",
+  "item.cncleanse.red_sponge": "Red Sponge",
+  "item.cncleanse.wet_light_blue_sponge": "Wet Light Blue Sponge",
+  "item.cncleanse.wet_lime_sponge": "Wet Lime Sponge",
+  "item.cncleanse.wet_red_sponge": "Wet Red Sponge",
+  "item.cncleanse.wet_white_sponge": "Wet White Sponge",
+  "item.cncleanse.wet_yellow_sponge": "Wet Yellow Sponge",
+  "item.cncleanse.white_sponge": "White Sponge",
+  "item.cncleanse.yellow_sponge": "Yellow Sponge",
+  "itemGroup.cncleanse.main_tab": "Main Tab"
+}

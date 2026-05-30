@@ -11,22 +11,15 @@ import static com.simibubi.create.foundation.data.TagGen.tagBlockAndItem;
 
 public class AllBlocks {
 
-    public static final BlockEntry<DrySpongeBlock> WHITE_SPONGE_BLOCK =
-            dryBlock("white_sponge_block", SpongeColor.WHITE);
-    public static final BlockEntry<WetSpongeBlock> WET_WHITE_SPONGE_BLOCK =
-            wetBlock("wet_white_sponge_block", SpongeColor.WHITE);
-    public static final BlockEntry<DrySpongeBlock> RED_SPONGE_BLOCK =
-            dryBlock("red_sponge_block", SpongeColor.RED);
-    public static final BlockEntry<WetSpongeBlock> WET_RED_SPONGE_BLOCK =
-            wetBlock("wet_red_sponge_block", SpongeColor.RED);
-    public static final BlockEntry<DrySpongeBlock> LIME_SPONGE_BLOCK =
-            dryBlock("lime_sponge_block", SpongeColor.LIME);
-    public static final BlockEntry<WetSpongeBlock> WET_LIME_SPONGE_BLOCK =
-            wetBlock("wet_lime_sponge_block", SpongeColor.LIME);
-    public static final BlockEntry<DrySpongeBlock> LIGHT_BLUE_SPONGE_BLOCK =
-            dryBlock("light_blue_sponge_block", SpongeColor.LIGHT_BLUE);
-    public static final BlockEntry<WetSpongeBlock> WET_LIGHT_BLUE_SPONGE_BLOCK =
-            wetBlock("wet_light_blue_sponge_block", SpongeColor.LIGHT_BLUE);
+    public static final BlockEntry<DrySpongeBlock> WHITE_SPONGE_BLOCK = dryBlock("white_sponge_block", SpongeColor.WHITE);
+    public static final BlockEntry<DrySpongeBlock> RED_SPONGE_BLOCK = dryBlock("red_sponge_block", SpongeColor.RED);
+    public static final BlockEntry<DrySpongeBlock> LIME_SPONGE_BLOCK = dryBlock("lime_sponge_block", SpongeColor.LIME);
+    public static final BlockEntry<DrySpongeBlock> LIGHT_BLUE_SPONGE_BLOCK = dryBlock("light_blue_sponge_block", SpongeColor.LIGHT_BLUE);
+
+    public static final BlockEntry<WetSpongeBlock> WET_WHITE_SPONGE_BLOCK = wetBlock("wet_white_sponge_block", SpongeColor.WHITE);
+    public static final BlockEntry<WetSpongeBlock> WET_RED_SPONGE_BLOCK = wetBlock("wet_red_sponge_block", SpongeColor.RED);
+    public static final BlockEntry<WetSpongeBlock> WET_LIME_SPONGE_BLOCK = wetBlock("wet_lime_sponge_block", SpongeColor.LIME);
+    public static final BlockEntry<WetSpongeBlock> WET_LIGHT_BLUE_SPONGE_BLOCK = wetBlock("wet_light_blue_sponge_block", SpongeColor.LIGHT_BLUE);
 
     private static BlockEntry<DrySpongeBlock> dryBlock(String name, SpongeColor color) {
         return CnCleanse.REGISTRATE

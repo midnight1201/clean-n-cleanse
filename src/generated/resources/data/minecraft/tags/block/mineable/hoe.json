@@ -1,12 +1,12 @@
 {
   "values": [
     "cncleanse:white_sponge_block",
-    "cncleanse:red_sponge_block",
-    "cncleanse:lime_sponge_block",
-    "cncleanse:light_blue_sponge_block",
     "cncleanse:wet_white_sponge_block",
+    "cncleanse:red_sponge_block",
     "cncleanse:wet_red_sponge_block",
+    "cncleanse:lime_sponge_block",
     "cncleanse:wet_lime_sponge_block",
+    "cncleanse:light_blue_sponge_block",
     "cncleanse:wet_light_blue_sponge_block"
   ]
 }
