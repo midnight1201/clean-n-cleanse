@@ -84,6 +84,10 @@ public class WetSpongeItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
+        InteractionResult cauldron = SpongeCauldronInteractions.depositWater(context, color);
+        if (cauldron != InteractionResult.PASS) {
+            return cauldron;
+        }
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
