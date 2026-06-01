@@ -3,6 +3,7 @@
     "cncleanse:white_sponge_block",
     "cncleanse:red_sponge_block",
     "cncleanse:lime_sponge_block",
-    "cncleanse:light_blue_sponge_block"
+    "cncleanse:light_blue_sponge_block",
+    "minecraft:sponge"
   ]
 }

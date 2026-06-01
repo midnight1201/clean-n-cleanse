@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cncleanse:wet_sponge_block_from_items",
+  "key": {
+    "C": {
+      "item": "cncleanse:wet_red_sponge"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cncleanse:wet_red_sponge_block"
+  }
+}

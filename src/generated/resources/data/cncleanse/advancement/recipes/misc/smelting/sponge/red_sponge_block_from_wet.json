@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cncleanse:smelting/sponge/red_sponge_block_from_wet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wet_red_sponge_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cncleanse:wet_red_sponge_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wet_red_sponge_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cncleanse:smelting/sponge/red_sponge_block_from_wet"
+    ]
+  }
+}

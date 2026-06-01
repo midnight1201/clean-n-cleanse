@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "minecraft:sponge"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:wet_sponge"
+    }
+  ]
+}

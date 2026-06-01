@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.midnight.cncleanse.AllTags;
+import net.midnight.cncleanse.register.CnCleanseTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
@@ -20,6 +20,6 @@ public class SpongeSmelting {
     @Expression("?.is(WET_SPONGE.asItem())")
     @WrapOperation(method = "burn", at = @At("MIXINEXTRAS:EXPRESSION"))
     private static boolean addWetSponge(ItemStack instance, Item item, Operation<Boolean> original) {
-        return original.call(instance, item) || instance.is(AllTags.Items.WET_SPONGE_BLOCKS);
+        return original.call(instance, item) || instance.is(CnCleanseTags.Items.WET_SPONGE_BLOCKS);
     }
 }

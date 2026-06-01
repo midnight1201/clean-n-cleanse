@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cncleanse:item/yellow_sponge"
+    "layer0": "cncleanse:item/sponge/dry/yellow_sponge"
   }
 }

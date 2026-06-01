@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cncleanse:dry_sponge_block_from_items",
+  "key": {
+    "C": {
+      "item": "cncleanse:light_blue_sponge"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cncleanse:light_blue_sponge_block"
+  }
+}

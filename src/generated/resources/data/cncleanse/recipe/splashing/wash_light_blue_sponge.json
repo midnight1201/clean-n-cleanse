@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "cncleanse:light_blue_sponge_block"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:wet_light_blue_sponge_block"
+    }
+  ]
+}

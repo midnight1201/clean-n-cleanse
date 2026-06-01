@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "cncleanse:lime_sponge_block"
+    }
+  ],
+  "processing_time": 20,
+  "results": [
+    {
+      "count": 9,
+      "id": "cncleanse:lime_sponge"
+    }
+  ]
+}

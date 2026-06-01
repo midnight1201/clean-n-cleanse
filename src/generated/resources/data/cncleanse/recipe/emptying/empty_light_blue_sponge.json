@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "cncleanse:wet_light_blue_sponge"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:light_blue_sponge"
+    },
+    {
+      "amount": 250,
+      "id": "minecraft:water"
+    }
+  ]
+}

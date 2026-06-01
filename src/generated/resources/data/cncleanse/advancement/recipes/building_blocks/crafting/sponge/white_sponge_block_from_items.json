@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cncleanse:crafting/sponge/white_sponge_block_from_items"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_sponge_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cncleanse:white_sponge"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_white_sponge_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cncleanse:crafting/sponge/white_sponge_block_from_items"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "cncleanse:block/wet_red_sponge_block"
+    "all": "cncleanse:block/sponge/wet/wet_red_sponge_block"
   }
 }

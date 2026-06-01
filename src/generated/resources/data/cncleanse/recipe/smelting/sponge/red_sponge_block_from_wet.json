@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "ingredient": {
+    "item": "cncleanse:wet_red_sponge_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "cncleanse:red_sponge_block"
+  }
+}
