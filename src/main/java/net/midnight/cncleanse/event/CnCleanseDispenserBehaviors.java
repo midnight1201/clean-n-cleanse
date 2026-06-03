@@ -2,7 +2,6 @@ package net.midnight.cncleanse.event;
 
 import net.midnight.cncleanse.CnCleanse;
 import net.midnight.cncleanse.content.LimeSulfurBottle;
-import net.midnight.cncleanse.content.sponge.item.SpongeCauldronInteractions;
 import net.midnight.cncleanse.content.sponge.item.DrySpongeItem;
 import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.content.sponge.item.WetSpongeItem;
@@ -73,13 +72,6 @@ public final class CnCleanseDispenserBehaviors {
             Level level = source.level();
             Direction facing = source.state().getValue(DispenserBlock.FACING);
             BlockPos target = source.pos().relative(facing);
-            BlockState state = level.getBlockState(target);
-
-            if (SpongeCauldronInteractions.getNextStateForTake(state) != null) {
-                SpongeCauldronInteractions.takeWater(level, target, state, null);
-                setSuccess(true);
-                return replaceOne(source, stack, new ItemStack(dry.getColor().wet().get()));
-            }
 
             if (!DrySpongeItem.canAbsorbAt(level, target)) {
                 return stack;
@@ -110,12 +102,6 @@ public final class CnCleanseDispenserBehaviors {
             Direction facing = source.state().getValue(DispenserBlock.FACING);
             BlockPos target = source.pos().relative(facing);
             BlockState state = level.getBlockState(target);
-
-            if (SpongeCauldronInteractions.getNextStateForDeposit(state) != null) {
-                SpongeCauldronInteractions.depositWater(level, target, state, null);
-                setSuccess(true);
-                return replaceOne(source, stack, new ItemStack(wet.getColor().dry().get()));
-            }
 
             if (!WetSpongeItem.canConvertToMudFromDispenser(state)) {
                 return stack;
