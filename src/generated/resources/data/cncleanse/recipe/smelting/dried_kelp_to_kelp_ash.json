@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "ingredient": {
+    "item": "minecraft:dried_kelp"
+  },
+  "result": {
+    "count": 1,
+    "id": "cncleanse:kelp_ash"
+  }
+}

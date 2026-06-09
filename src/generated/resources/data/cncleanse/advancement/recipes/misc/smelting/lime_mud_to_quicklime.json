@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lime_mud_to_quicklime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cncleanse:lime_mud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cncleanse:smelting/lime_mud_to_quicklime"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lime_mud_to_quicklime"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cncleanse:smelting/lime_mud_to_quicklime"
+    ]
+  }
+}

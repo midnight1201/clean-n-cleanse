@@ -1,0 +1,15 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create:scorchia"
+    }
+  ],
+  "processing_time": 250,
+  "results": [
+    {
+      "chance": 0.4,
+      "id": "cncleanse:sulfur"
+    }
+  ]
+}

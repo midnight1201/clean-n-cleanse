@@ -1,6 +1,7 @@
 package net.midnight.cncleanse.data;
 
 import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.providers.RegistrateLangProvider;
 import net.midnight.cncleanse.CnCleanse;
 import net.midnight.cncleanse.register.CnCleanseTags;
 import net.minecraft.resources.ResourceLocation;
@@ -24,10 +25,9 @@ public final class CnCleanseLang {
             public static final String WET_SPONGE_ITEMS = tagKey(CnCleanseTags.Items.WET_SPONGE_ITEMS, "item");
         }
 
-        public static final class ResourcePacks {
-            private ResourcePacks() {}
-
-            public static final String NOMENCLATURE = "resourcepack.cncleanse.nomenclature";
+        public static final class Tooltips {
+            private Tooltips() {}
+            public static final String LIME_SULFUR_BOTTLE = "item.cncleanse.lime_sulfur_bottle.tooltip";
         }
     }
 
@@ -38,7 +38,12 @@ public final class CnCleanseLang {
         static final String WET_SPONGE_BLOCKS = "Wet Sponge Blocks";
         static final String SPONGE_ITEMS = "Sponge Items";
         static final String WET_SPONGE_ITEMS = "Wet Sponge Items";
-        static final String NOMENCLATURE_PACK = "Clean n' Cleanse: Nomenclature";
+
+        static final String LIME_SULFUR_SUMMARY = "Fungicide and patina agent.";
+        static final String LIME_SULFUR_C1 = "When used on Mycelium";
+        static final String LIME_SULFUR_B1 = "_Sterilizes_ fungal spores.";
+        static final String LIME_SULFUR_C2 = "When used on unwaxed Copper";
+        static final String LIME_SULFUR_B2 = "Increases the _oxidation_ state.";
     }
 
     public static void register() {
@@ -50,23 +55,28 @@ public final class CnCleanseLang {
             prov.add(Keys.Tags.SPONGE_ITEMS, Default.SPONGE_ITEMS);
             prov.add(Keys.Tags.WET_SPONGE_ITEMS, Default.WET_SPONGE_ITEMS);
 
-            prov.add(Keys.ResourcePacks.NOMENCLATURE, Default.NOMENCLATURE_PACK);
-
-            prov.add("item.cncleanse.lime_sulfur_bottle.tooltip.summary",
-                    "Fungicide and patina agent.");
-            prov.add("item.cncleanse.lime_sulfur_bottle.tooltip.condition1",
-                    "When used on Mycelium");
-            prov.add("item.cncleanse.lime_sulfur_bottle.tooltip.behaviour1",
-                    "Converts _Mycelium_ into _Dirt_.");
-            prov.add("item.cncleanse.lime_sulfur_bottle.tooltip.condition2",
-                    "When used on Copper");
-            prov.add("item.cncleanse.lime_sulfur_bottle.tooltip.behaviour2",
-                    "Increases the _oxidation_ of _unwaxed_ copper.");
+            String base = Keys.Tooltips.LIME_SULFUR_BOTTLE;
+            addTooltipSummary(prov, base, Default.LIME_SULFUR_SUMMARY);
+            addTooltipLine(prov, base, 1, Default.LIME_SULFUR_C1, Default.LIME_SULFUR_B1);
+            addTooltipLine(prov, base, 2, Default.LIME_SULFUR_C2, Default.LIME_SULFUR_B2);
         });
     }
 
     public static String tagKey(TagKey<?> tag, String registryType) {
         ResourceLocation id = tag.location();
         return "tag." + registryType + "." + id.getNamespace() + "." + id.getPath();
+    }
+
+    private static void addTooltipSummary(RegistrateLangProvider prov, String base, String summary) {
+        prov.add(base + ".summary", summary);
+    }
+    private static void addTooltipLine(
+            RegistrateLangProvider prov,
+            String base,
+            int index,
+            String condition,
+            String behaviour) {
+        prov.add(base + ".condition" + index, condition);
+        prov.add(base + ".behaviour" + index, behaviour);
     }
 }

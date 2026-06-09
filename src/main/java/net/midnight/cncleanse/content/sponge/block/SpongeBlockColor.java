@@ -35,6 +35,11 @@ public enum SpongeBlockColor {
         };
     }
 
+    public String blockId(boolean wet) {
+        String color = name().toLowerCase();
+        return wet ? "wet_" + color + "_sponge_block" : color + "_sponge_block";
+    }
+
     public BlockState dryState() {
         return dry().get().defaultBlockState();
     }

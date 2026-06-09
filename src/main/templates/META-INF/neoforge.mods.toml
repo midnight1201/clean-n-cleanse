@@ -32,3 +32,10 @@ type = "required"
 versionRange = "[6.0.9,6.1.0)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "vanillabackport"
+type = "optional"
+versionRange = "[1.1.7,)"
+ordering = "NONE"
+side = "BOTH"

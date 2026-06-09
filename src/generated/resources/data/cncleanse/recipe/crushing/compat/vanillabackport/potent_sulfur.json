@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vanillabackport"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "type": "neoforge:compound",
+      "ingredients": [
+        {
+          "item": "minecraft:potent_sulfur"
+        }
+      ]
+    }
+  ],
+  "processing_time": 500,
+  "results": [
+    {
+      "count": 9,
+      "id": "cncleanse:sulfur"
+    },
+    {
+      "chance": 0.75,
+      "count": 2,
+      "id": "cncleanse:sulfur"
+    },
+    {
+      "chance": 0.75,
+      "id": "cncleanse:sulfur"
+    }
+  ]
+}

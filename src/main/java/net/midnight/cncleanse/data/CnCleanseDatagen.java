@@ -8,6 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,6 +30,14 @@ public class CnCleanseDatagen {
             generator.addProvider(true, new CnCleanseFillingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseEmptyingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseCuttingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseCrushingRecipeGen(output, lookup));
         }
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+
+        CnCleanseCompatTagGen.Blocks blockTags =
+                new CnCleanseCompatTagGen.Blocks(output, lookup, existingFileHelper);
+            generator.addProvider(true, blockTags);
+            generator.addProvider(true, new CnCleanseCompatTagGen.Items(
+                output, lookup, blockTags.contentsGetter(), existingFileHelper));
     }
 }

@@ -43,6 +43,9 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
         smeltWetToDry(out, CnCleanseBlocks.RED_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_RED_SPONGE_BLOCK.get(), "red_sponge_block");
         smeltWetToDry(out, CnCleanseBlocks.LIME_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_LIME_SPONGE_BLOCK.get(), "lime_sponge_block");
         smeltWetToDry(out, CnCleanseBlocks.LIGHT_BLUE_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_LIGHT_BLUE_SPONGE_BLOCK.get(), "light_blue_sponge_block");
+
+        smelt(out, CnCleanseItems.LIME_MUD.get(), CnCleanseItems.QUICKLIME.get(), "lime_mud_to_quicklime");
+        smelt(out, Items.DRIED_KELP, CnCleanseItems.KELP_ASH.get(), "dried_kelp_to_kelp_ash");
     }
 
     private void itemsToBlock(RecipeOutput out, ItemLike block, ItemLike item, String name, String group) {
@@ -55,9 +58,13 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
                 .unlockedBy("has_" + name, has(item))
                 .save(out, CnCleanse.asResource("crafting/sponge/" + name + "_from_items"));
     }
+
+    private void smelt(RecipeOutput out, ItemLike input, ItemLike result, String name) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, result, 0.15f, 200)
+                .unlockedBy("has_" + name, has(input))
+                .save(out, CnCleanse.asResource("smelting/" + name));
+    }
     private void smeltWetToDry(RecipeOutput out, ItemLike dry, ItemLike wet, String name) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(wet), RecipeCategory.MISC, dry, 0.15f, 200)
-                .unlockedBy("has_wet_" + name, has(wet))
-                .save(out, CnCleanse.asResource("smelting/sponge/" + name + "_from_wet"));
+        smelt(out, wet, dry, "sponge/" + name + "_from_wet");
     }
 }

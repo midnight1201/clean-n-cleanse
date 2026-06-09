@@ -38,4 +38,9 @@ public enum SpongeItemColor {
             case LIGHT_BLUE -> CnCleanseItems.WET_LIGHT_BLUE_SPONGE;
         };
     }
+
+    public String itemId(boolean wet) {
+        String color = name().toLowerCase();
+        return wet ? "wet_" + color + "_sponge" : color + "_sponge";
+    }
 }
