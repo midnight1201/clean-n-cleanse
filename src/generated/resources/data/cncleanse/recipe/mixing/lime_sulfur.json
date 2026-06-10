@@ -1,0 +1,28 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "cncleanse:sulfur"
+    },
+    {
+      "item": "cncleanse:sulfur"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "cncleanse:slaked_lime"
+    },
+    {
+      "type": "neoforge:tag",
+      "amount": 750,
+      "tag": "c:water"
+    }
+  ],
+  "results": [
+    {
+      "amount": 1000,
+      "id": "cncleanse:lime_sulfur"
+    }
+  ]
+}

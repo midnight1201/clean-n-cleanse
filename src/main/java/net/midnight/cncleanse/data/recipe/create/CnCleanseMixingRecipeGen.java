@@ -55,6 +55,14 @@ public class CnCleanseMixingRecipeGen extends MixingRecipeGen {
                     .require(CnCleanseFluids.SLAKED_LIME.get(), 250)
                     .output(CnCleanseFluids.CAUSTIC_SODA.get(), 500)
                     .output(CnCleanseItems.LIME_MUD.get())
+                    .requiresHeat(HeatCondition.HEATED)),
+
+            LIME_SULFUR = create("lime_sulfur", b -> b
+                    .require(CnCleanseItems.SULFUR.get())
+                    .require(CnCleanseItems.SULFUR.get())
+                    .require(CnCleanseFluids.SLAKED_LIME.get(), 250)
+                    .require(Tags.Fluids.WATER, 750)
+                    .output(CnCleanseFluids.LIME_SULFUR.get(), 1000)
                     .requiresHeat(HeatCondition.HEATED))
                     ;
 }
