@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "cncleanse:quicklime"
+    },
+    {
+      "type": "neoforge:tag",
+      "amount": 250,
+      "tag": "c:water"
+    }
+  ],
+  "results": [
+    {
+      "amount": 250,
+      "id": "cncleanse:slaked_lime"
+    }
+  ]
+}

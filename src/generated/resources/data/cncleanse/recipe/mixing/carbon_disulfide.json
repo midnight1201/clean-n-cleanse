@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "tag": "minecraft:coals"
+    },
+    {
+      "item": "cncleanse:sulfur"
+    },
+    {
+      "item": "cncleanse:sulfur"
+    }
+  ],
+  "results": [
+    {
+      "amount": 250,
+      "id": "cncleanse:carbon_disulfide"
+    }
+  ]
+}

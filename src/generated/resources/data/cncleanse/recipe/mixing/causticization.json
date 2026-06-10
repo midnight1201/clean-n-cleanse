@@ -1,0 +1,23 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "cncleanse:soda_ash"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "cncleanse:slaked_lime"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:lime_mud"
+    },
+    {
+      "amount": 500,
+      "id": "cncleanse:caustic_soda"
+    }
+  ]
+}

@@ -63,7 +63,7 @@ public class CnCleanse {
         return asResource((wet ? "item/sponge/wet/" : "item/sponge/dry/") + name);
     }
     public static ResourceLocation bottleTexture(String fluidName) {
-        return asResource("item/" + fluidName + "_bottle");
+        return asResource("item/beaker/" + fluidName + "_bottle");
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {

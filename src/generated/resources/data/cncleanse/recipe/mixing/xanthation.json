@@ -1,0 +1,18 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "cncleanse:alkali_cellulose"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 100,
+      "fluid": "cncleanse:carbon_disulfide"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:xanthate"
+    }
+  ]
+}

@@ -31,6 +31,7 @@ public class CnCleanseDatagen {
             generator.addProvider(true, new CnCleanseEmptyingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseCuttingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseCrushingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseMixingRecipeGen(output, lookup));
         }
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 

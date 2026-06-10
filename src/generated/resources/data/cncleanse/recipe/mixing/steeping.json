@@ -1,0 +1,18 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:pulp"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 250,
+      "fluid": "cncleanse:caustic_soda"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:alkali_cellulose"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cncleanse:item/caustic_soda_bottle"
+    "layer0": "cncleanse:item/beaker/caustic_soda_bottle"
   }
 }
