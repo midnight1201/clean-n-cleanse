@@ -2,6 +2,7 @@ package net.midnight.cncleanse.data.recipe.create;
 
 import com.simibubi.create.api.data.recipe.FillingRecipeGen;
 import net.midnight.cncleanse.CnCleanse;
+import net.midnight.cncleanse.content.CnCleanseBottleFilling;
 import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.register.CnCleanseItems;
 import net.minecraft.core.HolderLookup;
@@ -26,8 +27,9 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
 
     private final Set<Block> oxidationSources = new HashSet<>();
 
-    private static final int FLUID_PER_ITEM = 250;
-    private static final int FLUID_PER_BLOCK = 1000;
+    private static final int BOTTLE_AMOUNT = CnCleanseBottleFilling.AMOUNT;
+    private static final int SPONGE_WATER_PER_ITEM = 250;
+    private static final int SPONGE_WATER_PER_BLOCK = 1000;
 
     public CnCleanseFillingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CnCleanse.ID);
@@ -68,35 +70,35 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
     private GeneratedRecipe fillItem(SpongeItemColor color) {
         String name = color.name().toLowerCase();
         return create("fill_" + name + "_sponge", b -> b
-                .require(Fluids.WATER, FLUID_PER_ITEM)
+                .require(Fluids.WATER, SPONGE_WATER_PER_ITEM)
                 .require(color.dry().get())
                 .output(color.wet().get()));
     }
     private GeneratedRecipe fillBlock(SpongeItemColor color) {
         String name = color.name().toLowerCase();
         return create("fill_" + name + "_sponge_block", b -> b
-                .require(Fluids.WATER, FLUID_PER_BLOCK)
+                .require(Fluids.WATER, SPONGE_WATER_PER_BLOCK)
                 .require(color.dryBlock())
                 .output(color.wetBlock()));
     }
 
     private GeneratedRecipe fillBottle(String fluidName, FlowingFluid fluid, ItemLike bottle) {
         return create("fill_" + fluidName + "_bottle", b -> b
-                .require(fluid, FLUID_PER_ITEM)
+                .require(fluid, BOTTLE_AMOUNT)
                 .require(Items.GLASS_BOTTLE)
                 .output(bottle));
     }
 
     private GeneratedRecipe sterilizeMycelium() {
         return create("sterilize_mycelium", b -> b
-                .require(CnCleanseFluids.LIME_SULFUR.get(), FLUID_PER_ITEM)
+                .require(CnCleanseFluids.LIME_SULFUR.get(), BOTTLE_AMOUNT)
                 .require(Blocks.MYCELIUM)
                 .output(Blocks.DIRT));
     }
     private void oxidizeCopper(Block from, Block to) {
         String name = BuiltInRegistries.BLOCK.getKey(from).getPath();
         create("oxidize_" + name, b -> b
-                .require(CnCleanseFluids.LIME_SULFUR.get(), FLUID_PER_ITEM)
+                .require(CnCleanseFluids.LIME_SULFUR.get(), BOTTLE_AMOUNT)
                 .require(from)
                 .output(to));
     }

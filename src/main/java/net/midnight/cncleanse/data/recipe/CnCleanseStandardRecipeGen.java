@@ -46,9 +46,8 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
 
     private void itemsToBlock(RecipeOutput out, ItemLike block, ItemLike item, String name, String group) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
-                .pattern("CCC")
-                .pattern("CCC")
-                .pattern("CCC")
+                .pattern("CC")
+                .pattern("CC")
                 .define('C', item)
                 .group(group)
                 .unlockedBy("has_" + name, has(item))

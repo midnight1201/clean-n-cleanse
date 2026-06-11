@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 public class CnCleanseCuttingRecipeGen extends CuttingRecipeGen {
 
     private static final int DURATION = 20;
-    private static final int ITEMS = 9;
+    private static final int ITEMS = 4;
 
     public CnCleanseCuttingRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CnCleanse.ID);

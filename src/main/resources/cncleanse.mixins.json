@@ -6,7 +6,8 @@
   "refmap": "cncleanse.refmap.json",
   "mixins": [
     "SpongeSmelting",
-    "BasinSpongeDrain"
+    "BasinSpongeDrain",
+    "GenericItemFillingMixin"
   ],
   "client": [],
   "injectors": {
