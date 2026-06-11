@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:dyes/light_blue"
+    },
+    {
+      "item": "cncleanse:sodium_sulfate"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 500,
+      "fluid": "cncleanse:viscose"
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "id": "cncleanse:light_blue_salted_viscose"
+    }
+  ]
+}

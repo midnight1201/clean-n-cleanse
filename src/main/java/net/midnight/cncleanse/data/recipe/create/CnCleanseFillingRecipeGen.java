@@ -2,7 +2,7 @@ package net.midnight.cncleanse.data.recipe.create;
 
 import com.simibubi.create.api.data.recipe.FillingRecipeGen;
 import net.midnight.cncleanse.CnCleanse;
-import net.midnight.cncleanse.register.CnCleanseBlocks;
+import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.register.CnCleanseItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -35,79 +35,64 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
     }
 
     GeneratedRecipe
-            WET_WHITE_SPONGE = fillItem("white",
-                    CnCleanseItems.WHITE_SPONGE.get(),
-                    CnCleanseItems.WET_WHITE_SPONGE.get()),
-            WET_RED_SPONGE = fillItem("red",
-                    CnCleanseItems.RED_SPONGE.get(),
-                    CnCleanseItems.WET_RED_SPONGE.get()),
-            WET_YELLOW_SPONGE = fillItem("yellow",
-                    CnCleanseItems.YELLOW_SPONGE.get(),
-                    CnCleanseItems.WET_YELLOW_SPONGE.get()),
-            WET_LIME_SPONGE = fillItem("lime",
-                    CnCleanseItems.LIME_SPONGE.get(),
-                    CnCleanseItems.WET_LIME_SPONGE.get()),
-            WET_LIGHT_BLUE_SPONGE = fillItem("light_blue",
-                    CnCleanseItems.LIGHT_BLUE_SPONGE.get(),
-                    CnCleanseItems.WET_LIGHT_BLUE_SPONGE.get()),
+            WET_WHITE_SPONGE = fillItem(SpongeItemColor.WHITE),
+            WET_RED_SPONGE = fillItem(SpongeItemColor.RED),
+            WET_YELLOW_SPONGE = fillItem(SpongeItemColor.YELLOW),
+            WET_LIME_SPONGE = fillItem(SpongeItemColor.LIME),
+            WET_LIGHT_BLUE_SPONGE = fillItem(SpongeItemColor.LIGHT_BLUE),
 
-            WET_WHITE_SPONGE_BLOCK = fillBlock("white",
-                    CnCleanseBlocks.WHITE_SPONGE_BLOCK.get(),
-                    CnCleanseBlocks.WET_WHITE_SPONGE_BLOCK.get()),
-            WET_RED_SPONGE_BLOCK = fillBlock("red",
-                    CnCleanseBlocks.RED_SPONGE_BLOCK.get(),
-                    CnCleanseBlocks.WET_RED_SPONGE_BLOCK.get()),
-            WET_YELLOW_SPONGE_BLOCK = fillBlock("yellow",
-                    Blocks.SPONGE,
-                    Blocks.WET_SPONGE),
-            WET_LIME_SPONGE_BLOCK = fillBlock("lime",
-                    CnCleanseBlocks.LIME_SPONGE_BLOCK.get(),
-                    CnCleanseBlocks.WET_LIME_SPONGE_BLOCK.get()),
-            WET_LIGHT_BLUE_SPONGE_BLOCK = fillBlock("light_blue",
-                    CnCleanseBlocks.LIGHT_BLUE_SPONGE_BLOCK.get(),
-                    CnCleanseBlocks.WET_LIGHT_BLUE_SPONGE_BLOCK.get()),
+            WET_WHITE_SPONGE_BLOCK = fillBlock(SpongeItemColor.WHITE),
+            WET_RED_SPONGE_BLOCK = fillBlock(SpongeItemColor.RED),
+            WET_YELLOW_SPONGE_BLOCK = fillBlock(SpongeItemColor.YELLOW),
+            WET_LIME_SPONGE_BLOCK = fillBlock(SpongeItemColor.LIME),
+            WET_LIGHT_BLUE_SPONGE_BLOCK = fillBlock(SpongeItemColor.LIGHT_BLUE),
 
-            SLAKED_LIME_BOTTLE = fillBottle("slaked_lime",
-                    CnCleanseFluids.SLAKED_LIME.get(),
-                    CnCleanseItems.SLAKED_LIME_BOTTLE),
             CAUSTIC_SODA_BOTTLE = fillBottle("caustic_soda",
                     CnCleanseFluids.CAUSTIC_SODA.get(),
                     CnCleanseItems.CAUSTIC_SODA_BOTTLE),
             CARBON_DISULFIDE_BOTTLE = fillBottle("carbon_disulfide",
                     CnCleanseFluids.CARBON_DISULFIDE.get(),
                     CnCleanseItems.CARBON_DISULFIDE_BOTTLE),
+            SLAKED_LIME_BOTTLE = fillBottle("slaked_lime",
+                    CnCleanseFluids.SLAKED_LIME.get(),
+                    CnCleanseItems.SLAKED_LIME_BOTTLE),
+            VISCOSE_BOTTLE = fillBottle("viscose",
+                    CnCleanseFluids.VISCOSE.get(),
+                    CnCleanseItems.VISCOSE_BOTTLE),
             LIME_SULFUR_BOTTLE = fillBottle("lime_sulfur",
                     CnCleanseFluids.LIME_SULFUR.get(),
                     CnCleanseItems.LIME_SULFUR_BOTTLE),
 
-            STERILIZE_MYCELIUM = sterilizeMycelium()
-                    ;
+            STERILIZE_MYCELIUM = sterilizeMycelium();
 
-    private GeneratedRecipe fillItem(String color, ItemLike dry, ItemLike wet) {
-        return create("fill_" + color + "_sponge", b -> b
+    private GeneratedRecipe fillItem(SpongeItemColor color) {
+        String name = color.name().toLowerCase();
+        return create("fill_" + name + "_sponge", b -> b
                 .require(Fluids.WATER, FLUID_PER_ITEM)
-                .require(dry)
-                .output(wet));
+                .require(color.dry().get())
+                .output(color.wet().get()));
     }
-    private GeneratedRecipe fillBlock(String color, ItemLike dry, ItemLike wet) {
-        return create("fill_" + color + "_sponge_block", b -> b
+    private GeneratedRecipe fillBlock(SpongeItemColor color) {
+        String name = color.name().toLowerCase();
+        return create("fill_" + name + "_sponge_block", b -> b
                 .require(Fluids.WATER, FLUID_PER_BLOCK)
-                .require(dry)
-                .output(wet));
+                .require(color.dryBlock())
+                .output(color.wetBlock()));
     }
+
     private GeneratedRecipe fillBottle(String fluidName, FlowingFluid fluid, ItemLike bottle) {
         return create("fill_" + fluidName + "_bottle", b -> b
                 .require(fluid, FLUID_PER_ITEM)
                 .require(Items.GLASS_BOTTLE)
                 .output(bottle));
     }
+
     private GeneratedRecipe sterilizeMycelium() {
         return create("sterilize_mycelium", b -> b
                 .require(CnCleanseFluids.LIME_SULFUR.get(), FLUID_PER_ITEM)
                 .require(Blocks.MYCELIUM)
                 .output(Blocks.DIRT));
     }
-
     private void oxidizeCopper(Block from, Block to) {
         String name = BuiltInRegistries.BLOCK.getKey(from).getPath();
         create("oxidize_" + name, b -> b

@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:dyes/yellow"
+    },
+    {
+      "item": "cncleanse:sodium_sulfate"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 500,
+      "fluid": "cncleanse:viscose"
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "id": "cncleanse:yellow_salted_viscose"
+    }
+  ]
+}

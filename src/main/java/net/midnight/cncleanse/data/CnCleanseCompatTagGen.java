@@ -18,15 +18,15 @@ public final class CnCleanseCompatTagGen {
 
     private static final String[] SULFUR_FAMILY = {
             "sulfur",
-            "polished_sulfur",
-            "sulfur_bricks",
-            "chiseled_sulfur",
             "sulfur_stairs",
             "sulfur_wall",
+            "polished_sulfur",
             "polished_sulfur_stairs",
             "polished_sulfur_wall",
+            "sulfur_bricks",
             "sulfur_brick_stairs",
             "sulfur_brick_wall",
+            "chiseled_sulfur"
     };
 
     private CnCleanseCompatTagGen() {}

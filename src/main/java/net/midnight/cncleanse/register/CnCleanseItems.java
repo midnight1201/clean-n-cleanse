@@ -7,9 +7,6 @@ import net.midnight.cncleanse.content.LimeSulfurBottle;
 import net.midnight.cncleanse.content.sponge.item.DrySpongeItem;
 import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.content.sponge.item.WetSpongeItem;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.Tags;
 
@@ -42,15 +39,25 @@ public class CnCleanseItems {
     public static final ItemEntry<Item> LIME_MUD = powder("lime_mud", "Lime Mud");
     public static final ItemEntry<Item> QUICKLIME = powder("quicklime", "Quicklime");
     public static final ItemEntry<Item> SODA_ASH = powder("soda_ash", "Soda Ash");
-    public static final ItemEntry<Item> SALT = powder("salt", "Salt");
+
+    public static final ItemEntry<Item> SALT = CnCleanse.REGISTRATE
+            .item("salt", Item::new)
+            .lang("Salt")
+            .tag(Tags.Items.DUSTS)
+            .tag(CnCleanseTags.Items.dust("salt"))
+            .tag(CnCleanseTags.Items.SALTS)
+            .model((ctx, prov) -> prov.generated(ctx, CnCleanse.asResource("item/salt")))
+            .register();
+
     public static final ItemEntry<Item> SULFUR = powder("sulfur", "Powdered Sulfur");
     public static final ItemEntry<Item> SODIUM_SULFATE = powder("sodium_sulfate", "Sodium Sulfate");
     public static final ItemEntry<Item> XANTHATE = powder("xanthate", "Xanthate");
     public static final ItemEntry<Item> KELP_ASH = powder("kelp_ash", "Kelp Ash");
 
-    public static final ItemEntry<Item> SLAKED_LIME_BOTTLE = bottle("slaked_lime", "Milk of Lime");
     public static final ItemEntry<Item> CAUSTIC_SODA_BOTTLE = bottle("caustic_soda", "Lye");
     public static final ItemEntry<Item> CARBON_DISULFIDE_BOTTLE = bottle("carbon_disulfide", "Carbon Disulfide");
+    public static final ItemEntry<Item> SLAKED_LIME_BOTTLE = bottle("slaked_lime", "Milk of Lime");
+    public static final ItemEntry<Item> VISCOSE_BOTTLE = bottle("viscose", "Viscose");
     public static final ItemEntry<LimeSulfurBottle> LIME_SULFUR_BOTTLE = bottle("lime_sulfur", "Lime Sulfur", LimeSulfurBottle::new);
 
     private static ItemEntry<DrySpongeItem> dry(SpongeItemColor color) {

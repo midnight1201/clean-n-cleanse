@@ -5,23 +5,15 @@
       "required": false
     },
     {
-      "id": "minecraft:polished_sulfur",
-      "required": false
-    },
-    {
-      "id": "minecraft:sulfur_bricks",
-      "required": false
-    },
-    {
-      "id": "minecraft:chiseled_sulfur",
-      "required": false
-    },
-    {
       "id": "minecraft:sulfur_stairs",
       "required": false
     },
     {
       "id": "minecraft:sulfur_wall",
+      "required": false
+    },
+    {
+      "id": "minecraft:polished_sulfur",
       "required": false
     },
     {
@@ -33,11 +25,19 @@
       "required": false
     },
     {
+      "id": "minecraft:sulfur_bricks",
+      "required": false
+    },
+    {
       "id": "minecraft:sulfur_brick_stairs",
       "required": false
     },
     {
       "id": "minecraft:sulfur_brick_wall",
+      "required": false
+    },
+    {
+      "id": "minecraft:chiseled_sulfur",
       "required": false
     }
   ]

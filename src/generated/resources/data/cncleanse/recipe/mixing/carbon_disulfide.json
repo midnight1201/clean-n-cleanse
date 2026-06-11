@@ -6,10 +6,10 @@
       "tag": "minecraft:coals"
     },
     {
-      "item": "cncleanse:sulfur"
+      "tag": "c:dusts/sulfur"
     },
     {
-      "item": "cncleanse:sulfur"
+      "tag": "c:dusts/sulfur"
     }
   ],
   "results": [

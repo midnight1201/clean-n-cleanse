@@ -29,6 +29,8 @@ public class CnCleanseTags {
         public static TagKey<Item> dust(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dusts/" + name));
         }
+        public static final TagKey<Item> SALTS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "salts"));
+
         private Items() {}
     }
     private CnCleanseTags() {}

@@ -2,6 +2,7 @@ package net.midnight.cncleanse.data.recipe.create;
 
 import com.simibubi.create.api.data.recipe.EmptyingRecipeGen;
 import net.midnight.cncleanse.CnCleanse;
+import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.register.CnCleanseFluids;
 import net.midnight.cncleanse.register.CnCleanseItems;
 import net.minecraft.core.HolderLookup;
@@ -23,42 +24,36 @@ public class CnCleanseEmptyingRecipeGen extends EmptyingRecipeGen {
     }
 
     GeneratedRecipe
-            WHITE = emptyItem("white",
-                    CnCleanseItems.WET_WHITE_SPONGE.get(),
-                    CnCleanseItems.WHITE_SPONGE.get()),
-            RED = emptyItem("red",
-                    CnCleanseItems.WET_RED_SPONGE.get(),
-                    CnCleanseItems.RED_SPONGE.get()),
-            YELLOW = emptyItem("yellow",
-                    CnCleanseItems.WET_YELLOW_SPONGE.get(),
-                    CnCleanseItems.YELLOW_SPONGE.get()),
-            LIME = emptyItem("lime",
-                    CnCleanseItems.WET_LIME_SPONGE.get(),
-                    CnCleanseItems.LIME_SPONGE.get()),
-            LIGHT_BLUE = emptyItem("light_blue",
-                    CnCleanseItems.WET_LIGHT_BLUE_SPONGE.get(),
-                    CnCleanseItems.LIGHT_BLUE_SPONGE.get()),
+            WHITE = emptySponge(SpongeItemColor.WHITE),
+            RED = emptySponge(SpongeItemColor.RED),
+            YELLOW = emptySponge(SpongeItemColor.YELLOW),
+            LIME = emptySponge(SpongeItemColor.LIME),
+            LIGHT_BLUE = emptySponge(SpongeItemColor.LIGHT_BLUE),
 
-            SLAKED_LIME_BOTTLE = emptyBottle("slaked_lime",
-                    CnCleanseFluids.SLAKED_LIME.get(),
-                    CnCleanseItems.SLAKED_LIME_BOTTLE),
             CAUSTIC_SODA_BOTTLE = emptyBottle("caustic_soda",
                     CnCleanseFluids.CAUSTIC_SODA.get(),
-                    CnCleanseItems.CAUSTIC_SODA_BOTTLE),
+                    CnCleanseItems.CAUSTIC_SODA_BOTTLE.get()),
             CARBON_DISULFIDE_BOTTLE = emptyBottle("carbon_disulfide",
                     CnCleanseFluids.CARBON_DISULFIDE.get(),
-                    CnCleanseItems.CARBON_DISULFIDE_BOTTLE),
+                    CnCleanseItems.CARBON_DISULFIDE_BOTTLE.get()),
+            SLAKED_LIME_BOTTLE = emptyBottle("slaked_lime",
+                    CnCleanseFluids.SLAKED_LIME.get(),
+                    CnCleanseItems.SLAKED_LIME_BOTTLE.get()),
+            VISCOSE_BOTTLE = emptyBottle("viscose",
+                    CnCleanseFluids.VISCOSE.get(),
+                    CnCleanseItems.VISCOSE_BOTTLE.get()),
             LIME_SULFUR_BOTTLE = emptyBottle("lime_sulfur",
                     CnCleanseFluids.LIME_SULFUR.get(),
-                    CnCleanseItems.LIME_SULFUR_BOTTLE)
-                    ;
+                    CnCleanseItems.LIME_SULFUR_BOTTLE.get());
 
-    private GeneratedRecipe emptyItem(String color, ItemLike wet, ItemLike dry) {
-        return create("empty_" + color + "_sponge", b -> b
-                .require(wet)
+    private GeneratedRecipe emptySponge(SpongeItemColor color) {
+        String name = color.name().toLowerCase();
+        return create("empty_" + name + "_sponge", b -> b
+                .require(color.wet().get())
                 .output(Fluids.WATER, FLUID_PER_ITEM)
-                .output(dry));
+                .output(color.dry().get()));
     }
+
     private GeneratedRecipe emptyBottle(String fluidName, FlowingFluid fluid, ItemLike bottle) {
         return create("empty_" + fluidName + "_bottle", b -> b
                 .require(bottle)

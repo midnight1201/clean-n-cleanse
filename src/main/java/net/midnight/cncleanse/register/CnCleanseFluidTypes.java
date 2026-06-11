@@ -2,6 +2,7 @@ package net.midnight.cncleanse.register;
 
 import com.simibubi.create.AllFluids.TintedFluidType;
 import com.tterrag.registrate.builders.FluidBuilder.FluidTypeFactory;
+import net.midnight.cncleanse.CnCleanse;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -14,6 +15,13 @@ public final class CnCleanseFluidTypes {
             ResourceLocation.fromNamespaceAndPath("create", "fluid/milk_still");
     public static final ResourceLocation CREATE_MILK_FLOW =
             ResourceLocation.fromNamespaceAndPath("create", "fluid/milk_flow");
+
+    public static ResourceLocation fluidStill(String name) {
+        return ResourceLocation.fromNamespaceAndPath(CnCleanse.ID, "fluid/" + name + "_still");
+    }
+    public static ResourceLocation fluidFlow(String name) {
+        return ResourceLocation.fromNamespaceAndPath(CnCleanse.ID, "fluid/" + name + "_flow");
+    }
 
     public static final class FluidTints {
         private FluidTints() {}

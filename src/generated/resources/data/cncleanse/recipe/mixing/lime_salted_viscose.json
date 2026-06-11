@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:dyes/lime"
+    },
+    {
+      "item": "cncleanse:sodium_sulfate"
+    },
+    {
+      "type": "neoforge:single",
+      "amount": 500,
+      "fluid": "cncleanse:viscose"
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "id": "cncleanse:lime_salted_viscose"
+    }
+  ]
+}

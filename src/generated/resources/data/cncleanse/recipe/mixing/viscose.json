@@ -2,18 +2,18 @@
   "type": "create:mixing",
   "ingredients": [
     {
-      "item": "cncleanse:quicklime"
+      "item": "cncleanse:xanthate"
     },
     {
       "type": "neoforge:single",
       "amount": 250,
-      "fluid": "minecraft:water"
+      "fluid": "cncleanse:caustic_soda"
     }
   ],
   "results": [
     {
-      "amount": 250,
-      "id": "cncleanse:slaked_lime"
+      "amount": 500,
+      "id": "cncleanse:viscose"
     }
   ]
 }

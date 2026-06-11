@@ -3,18 +3,18 @@
   "heat_requirement": "heated",
   "ingredients": [
     {
-      "item": "cncleanse:sulfur"
+      "tag": "c:dusts/sulfur"
     },
     {
-      "item": "cncleanse:salt"
+      "tag": "c:salts"
     },
     {
-      "item": "cncleanse:salt"
+      "tag": "c:salts"
     },
     {
-      "type": "neoforge:tag",
+      "type": "neoforge:single",
       "amount": 100,
-      "tag": "c:water"
+      "fluid": "minecraft:water"
     }
   ],
   "results": [

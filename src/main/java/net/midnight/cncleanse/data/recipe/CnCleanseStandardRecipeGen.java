@@ -1,6 +1,7 @@
 package net.midnight.cncleanse.data.recipe;
 
 import net.midnight.cncleanse.CnCleanse;
+import net.midnight.cncleanse.content.sponge.item.SpongeItemColor;
 import net.midnight.cncleanse.register.CnCleanseBlocks;
 import net.midnight.cncleanse.register.CnCleanseItems;
 import net.minecraft.core.HolderLookup;
@@ -27,22 +28,17 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput out) {
-        itemsToBlock(out, CnCleanseBlocks.WHITE_SPONGE_BLOCK.get(), CnCleanseItems.WHITE_SPONGE.get(), "white_sponge_block", DRY_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.RED_SPONGE_BLOCK.get(), CnCleanseItems.RED_SPONGE.get(), "red_sponge_block", DRY_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, Items.SPONGE, CnCleanseItems.YELLOW_SPONGE.get(), "yellow_sponge_block", DRY_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.LIME_SPONGE_BLOCK.get(), CnCleanseItems.LIME_SPONGE.get(), "lime_sponge_block", DRY_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.LIGHT_BLUE_SPONGE_BLOCK.get(), CnCleanseItems.LIGHT_BLUE_SPONGE.get(), "light_blue_sponge_block", DRY_BLOCK_FROM_ITEMS);
+        for (SpongeItemColor color : SpongeItemColor.values()) {
+            String name = color.name().toLowerCase() + "_sponge_block";
+            itemsToBlock(out, color.dryBlock(), color.dry().get(), name, DRY_BLOCK_FROM_ITEMS);
 
-        itemsToBlock(out, CnCleanseBlocks.WET_WHITE_SPONGE_BLOCK.get(), CnCleanseItems.WET_WHITE_SPONGE.get(), "wet_white_sponge_block", WET_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.WET_RED_SPONGE_BLOCK.get(), CnCleanseItems.WET_RED_SPONGE.get(), "wet_red_sponge_block", WET_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, Items.WET_SPONGE, CnCleanseItems.WET_YELLOW_SPONGE.get(), "wet_yellow_sponge_block", WET_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.WET_LIME_SPONGE_BLOCK.get(), CnCleanseItems.WET_LIME_SPONGE.get(), "wet_lime_sponge_block", WET_BLOCK_FROM_ITEMS);
-        itemsToBlock(out, CnCleanseBlocks.WET_LIGHT_BLUE_SPONGE_BLOCK.get(), CnCleanseItems.WET_LIGHT_BLUE_SPONGE.get(), "wet_light_blue_sponge_block", WET_BLOCK_FROM_ITEMS);
+            String wetName = "wet_" + name;
+            itemsToBlock(out, color.wetBlock(), color.wet().get(), wetName, WET_BLOCK_FROM_ITEMS);
 
-        smeltWetToDry(out, CnCleanseBlocks.WHITE_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_WHITE_SPONGE_BLOCK.get(), "white_sponge_block");
-        smeltWetToDry(out, CnCleanseBlocks.RED_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_RED_SPONGE_BLOCK.get(), "red_sponge_block");
-        smeltWetToDry(out, CnCleanseBlocks.LIME_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_LIME_SPONGE_BLOCK.get(), "lime_sponge_block");
-        smeltWetToDry(out, CnCleanseBlocks.LIGHT_BLUE_SPONGE_BLOCK.get(), CnCleanseBlocks.WET_LIGHT_BLUE_SPONGE_BLOCK.get(), "light_blue_sponge_block");
+            if (color != SpongeItemColor.YELLOW) {
+                smeltWetToDry(out, color.dryBlock(), color.wetBlock(), name);
+            }
+        }
 
         smelt(out, CnCleanseItems.LIME_MUD.get(), CnCleanseItems.QUICKLIME.get(), "lime_mud_to_quicklime");
         smelt(out, Items.DRIED_KELP, CnCleanseItems.KELP_ASH.get(), "dried_kelp_to_kelp_ash");
@@ -67,4 +63,6 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
     private void smeltWetToDry(RecipeOutput out, ItemLike dry, ItemLike wet, String name) {
         smelt(out, wet, dry, "sponge/" + name + "_from_wet");
     }
+
+
 }

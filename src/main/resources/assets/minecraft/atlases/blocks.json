@@ -7,6 +7,54 @@
     {
       "type": "single",
       "resource": "create:fluid/milk_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/viscose_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/yellow_salted_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/yellow_salted_viscose_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/red_salted_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/red_salted_viscose_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/lime_salted_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/lime_salted_viscose_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/light_blue_salted_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/light_blue_salted_viscose_flow"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/white_salted_viscose_still"
+    },
+    {
+      "type": "single",
+      "resource": "cncleanse:fluid/white_salted_viscose_flow"
     }
   ]
 }

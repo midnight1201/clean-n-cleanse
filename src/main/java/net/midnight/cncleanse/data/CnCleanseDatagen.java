@@ -25,13 +25,14 @@ public class CnCleanseDatagen {
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
         if (event.includeServer()) {
-            generator.addProvider(true, new CnCleanseStandardRecipeGen(output, lookup));
-            generator.addProvider(true, new CnCleanseWashingRecipeGen(output, lookup));
-            generator.addProvider(true, new CnCleanseFillingRecipeGen(output, lookup));
-            generator.addProvider(true, new CnCleanseEmptyingRecipeGen(output, lookup));
-            generator.addProvider(true, new CnCleanseCuttingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseCompactingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseCrushingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseCuttingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseEmptyingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseFillingRecipeGen(output, lookup));
             generator.addProvider(true, new CnCleanseMixingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseWashingRecipeGen(output, lookup));
+            generator.addProvider(true, new CnCleanseStandardRecipeGen(output, lookup));
         }
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 

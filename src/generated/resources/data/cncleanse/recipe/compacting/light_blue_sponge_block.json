@@ -1,0 +1,16 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "type": "neoforge:single",
+      "amount": 500,
+      "fluid": "cncleanse:light_blue_salted_viscose"
+    }
+  ],
+  "results": [
+    {
+      "id": "cncleanse:light_blue_sponge_block"
+    }
+  ]
+}
