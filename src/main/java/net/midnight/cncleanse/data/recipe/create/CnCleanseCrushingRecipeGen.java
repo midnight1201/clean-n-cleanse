@@ -26,6 +26,9 @@ public class CnCleanseCrushingRecipeGen extends CrushingRecipeGen {
     }
 
     GeneratedRecipe
+
+            // --- vanilla backport ---
+
             SULFUR_SPIKE = create("compat/vanillabackport/sulfur_spike", b -> b
                     .duration(100)
                     .require(CompatMods.MINECRAFT, "sulfur_spike")
@@ -54,6 +57,8 @@ public class CnCleanseCrushingRecipeGen extends CrushingRecipeGen {
                     .output(0.75f, CnCleanseItems.SULFUR.get(), 1)
                     .whenModLoaded("vanillabackport")),
 
+            // --- sulfur palette ---
+
             SOUL_SAND = soulCrush("soul_sand", Items.SOUL_SAND),
             SOUL_SOIL = soulCrush("soul_soil", Items.SOUL_SOIL),
 
@@ -62,8 +67,12 @@ public class CnCleanseCrushingRecipeGen extends CrushingRecipeGen {
             SCORCHIA = paletteSulfurCrush(AllPaletteStoneTypes.SCORCHIA, "scorchia"),
             SCORCHIA_RECYCLING = paletteSulfurRecycling(AllPaletteStoneTypes.SCORCHIA, "scorchia"),
 
+            // --- limestone palette ---
+
             LIMESTONE = paletteLimeMudCrush(AllPaletteStoneTypes.LIMESTONE, "limestone"),
             LIMESTONE_RECYCLING = paletteLimeMudRecycling(AllPaletteStoneTypes.LIMESTONE, "limestone");
+
+    /// --- helpers ---
 
     private GeneratedRecipe soulCrush(String id, ItemLike input) {
         return create(id, b -> b
@@ -99,6 +108,8 @@ public class CnCleanseCrushingRecipeGen extends CrushingRecipeGen {
                 .output(CnCleanseItems.LIME_MUD.get(), 1)
                 .output(0.5f, CnCleanseItems.LIME_MUD.get(), 1));
     }
+
+    // --- compat ---
 
     private enum CompatMods implements DatagenMod {
         MINECRAFT("minecraft");

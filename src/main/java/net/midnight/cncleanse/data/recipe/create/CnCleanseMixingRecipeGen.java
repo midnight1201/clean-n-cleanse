@@ -25,10 +25,39 @@ public class CnCleanseMixingRecipeGen extends MixingRecipeGen {
     }
 
     GeneratedRecipe
+
+            // --- viscose chain ---
+
             ALKALI_CELLULOSE = create("steeping", b -> b
                     .require(AllItems.PULP.get())
                     .require(CnCleanseFluids.CAUSTIC_SODA.get(), 250)
                     .output(CnCleanseItems.ALKALI_CELLULOSE.get())),
+
+            XANTHATE = create("xanthation", b -> b
+                    .require(CnCleanseItems.ALKALI_CELLULOSE.get())
+                    .require(CnCleanseFluids.CARBON_DISULFIDE.get(), 100)
+                    .output(CnCleanseItems.XANTHATE.get())),
+
+            VISCOSE = create("viscose", b -> b
+                    .require(CnCleanseItems.XANTHATE.get())
+                    .require(CnCleanseFluids.CAUSTIC_SODA.get(), 250)
+                    .output(CnCleanseFluids.VISCOSE.get(), 500)),
+
+            // --- alkali chemistry ---
+
+            CAUSTIC_SODA = create("causticization", b -> b
+                    .require(CnCleanseItems.SODA_ASH.get())
+                    .require(CnCleanseFluids.SLAKED_LIME.get(), 250)
+                    .output(CnCleanseFluids.CAUSTIC_SODA.get(), 500)
+                    .output(CnCleanseItems.LIME_MUD.get())
+                    .requiresHeat(HeatCondition.HEATED)),
+
+            SLAKED_LIME = create("slaked_lime", b -> b
+                    .require(CnCleanseItems.QUICKLIME.get())
+                    .require(Fluids.WATER, 250)
+                    .output(CnCleanseFluids.SLAKED_LIME.get(), 250)),
+
+            // --- sulfur chemistry ---
 
             SODIUM_SULFATE = create("sodium_sulfate", b -> b
                     .require(CnCleanseTags.Items.dust("sulfur"))
@@ -38,34 +67,12 @@ public class CnCleanseMixingRecipeGen extends MixingRecipeGen {
                     .output(CnCleanseItems.SODIUM_SULFATE.get())
                     .requiresHeat(HeatCondition.HEATED)),
 
-            XANTHATE = create("xanthation", b -> b
-                    .require(CnCleanseItems.ALKALI_CELLULOSE.get())
-                    .require(CnCleanseFluids.CARBON_DISULFIDE.get(), 100)
-                    .output(CnCleanseItems.XANTHATE.get())),
-
-            CAUSTIC_SODA = create("causticization", b -> b
-                    .require(CnCleanseItems.SODA_ASH.get())
-                    .require(CnCleanseFluids.SLAKED_LIME.get(), 250)
-                    .output(CnCleanseFluids.CAUSTIC_SODA.get(), 500)
-                    .output(CnCleanseItems.LIME_MUD.get())
-                    .requiresHeat(HeatCondition.HEATED)),
-
             CARBON_DISULFIDE = create("carbon_disulfide", b -> b
                     .require(ItemTags.COALS)
                     .require(CnCleanseTags.Items.dust("sulfur"))
                     .require(CnCleanseTags.Items.dust("sulfur"))
                     .output(CnCleanseFluids.CARBON_DISULFIDE.get(), 250)
                     .requiresHeat(HeatCondition.SUPERHEATED)),
-
-            SLAKED_LIME = create("slaked_lime", b -> b
-                    .require(CnCleanseItems.QUICKLIME.get())
-                    .require(Fluids.WATER, 250)
-                    .output(CnCleanseFluids.SLAKED_LIME.get(), 250)),
-
-            VISCOSE = create("viscose", b -> b
-                    .require(CnCleanseItems.XANTHATE.get())
-                    .require(CnCleanseFluids.CAUSTIC_SODA.get(), 250)
-                    .output(CnCleanseFluids.VISCOSE.get(), 500)),
 
             LIME_SULFUR = create("lime_sulfur", b -> b
                     .require(CnCleanseTags.Items.dust("sulfur"))
@@ -75,11 +82,15 @@ public class CnCleanseMixingRecipeGen extends MixingRecipeGen {
                     .output(CnCleanseFluids.LIME_SULFUR.get(), 1000)
                     .requiresHeat(HeatCondition.HEATED)),
 
+            // --- salted viscose ---
+
             SALTED_VISCOSE_WHITE = saltedViscose(SpongeItemColor.WHITE),
             SALTED_VISCOSE_RED = saltedViscose(SpongeItemColor.RED),
             SALTED_VISCOSE_YELLOW = saltedViscose(SpongeItemColor.YELLOW),
             SALTED_VISCOSE_LIME = saltedViscose(SpongeItemColor.LIME),
             SALTED_VISCOSE_LIGHT_BLUE = saltedViscose(SpongeItemColor.LIGHT_BLUE);
+
+    // --- helper ---
 
     private GeneratedRecipe saltedViscose(SpongeItemColor color) {
         String id = color.name().toLowerCase() + "_salted_viscose";

@@ -24,6 +24,8 @@ public class WetSpongeItem extends Item {
 
     private final SpongeItemColor color;
 
+    // --- fields / enum ---
+
     public WetSpongeItem(Properties properties, SpongeItemColor color) {
         super(properties);
         this.color = color;
@@ -37,6 +39,8 @@ public class WetSpongeItem extends Item {
         PLAYER,
         DISPENSER
     }
+
+    // --- static API ---
 
     public static boolean canConvertToMud(BlockState state, Direction clickedFace) {
         if (clickedFace == Direction.DOWN) {
@@ -81,6 +85,8 @@ public class WetSpongeItem extends Item {
         }
         level.playSound(null, pos, SoundEvents.SPONGE_ABSORB, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
+
+    // --- use on ---
 
     @Override
     public InteractionResult useOn(UseOnContext context) {

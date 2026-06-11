@@ -17,9 +17,13 @@ public final class CnCleanseLang {
         public static final class Tags {
             private Tags() {}
 
+            // --- block labels ---
+
             public static final String SPONGE_BLOCKS_BLOCK = tagKey(CnCleanseTags.Blocks.SPONGE_BLOCKS, "block");
             public static final String WET_SPONGE_BLOCKS_BLOCK = tagKey(CnCleanseTags.Blocks.WET_SPONGE_BLOCKS, "block");
             public static final String SULFUR_BLOCKS_BLOCK = tagKey(CnCleanseTags.Items.VB_SULFUR_BLOCKS, "block");
+
+            // --- item labels ---
 
             public static final String SPONGE_BLOCKS_ITEM = tagKey(CnCleanseTags.Items.SPONGE_BLOCKS, "item");
             public static final String WET_SPONGE_BLOCKS_ITEM = tagKey(CnCleanseTags.Items.WET_SPONGE_BLOCKS, "item");
@@ -28,10 +32,14 @@ public final class CnCleanseLang {
             public static final String WET_SPONGE_ITEMS = tagKey(CnCleanseTags.Items.WET_SPONGE_ITEMS, "item");
         }
 
+        // --- tooltips ---
+
         public static final class Tooltips {
             private Tooltips() {}
             public static final String LIME_SULFUR_BOTTLE = "item.cncleanse.lime_sulfur_bottle.tooltip";
         }
+
+        // --- vanilla overrides ---
 
         public static final class Vanilla {
             private Vanilla() {}

@@ -16,6 +16,8 @@ public class CnCleanseItems {
 
     private static final int BOTTLE_STACK_SIZE = 16;
 
+    // --- sponge items ---
+
     public static final ItemEntry<DrySpongeItem> WHITE_SPONGE = dry(SpongeItemColor.WHITE);
     public static final ItemEntry<WetSpongeItem> WET_WHITE_SPONGE = wet(SpongeItemColor.WHITE);
 
@@ -30,6 +32,8 @@ public class CnCleanseItems {
 
     public static final ItemEntry<DrySpongeItem> LIGHT_BLUE_SPONGE = dry(SpongeItemColor.LIGHT_BLUE);
     public static final ItemEntry<WetSpongeItem> WET_LIGHT_BLUE_SPONGE = wet(SpongeItemColor.LIGHT_BLUE);
+
+    // --- powders ---
 
     public static final ItemEntry<Item> ALKALI_CELLULOSE = CnCleanse.REGISTRATE
             .item("alkali_cellulose", Item::new)
@@ -54,11 +58,15 @@ public class CnCleanseItems {
     public static final ItemEntry<Item> XANTHATE = powder("xanthate", "Xanthate");
     public static final ItemEntry<Item> KELP_ASH = powder("kelp_ash", "Kelp Ash");
 
+    // --- fluid bottles ---
+
     public static final ItemEntry<Item> CAUSTIC_SODA_BOTTLE = bottle("caustic_soda", "Lye");
     public static final ItemEntry<Item> CARBON_DISULFIDE_BOTTLE = bottle("carbon_disulfide", "Carbon Disulfide");
     public static final ItemEntry<Item> SLAKED_LIME_BOTTLE = bottle("slaked_lime", "Milk of Lime");
     public static final ItemEntry<Item> VISCOSE_BOTTLE = bottle("viscose", "Viscose");
     public static final ItemEntry<LimeSulfurBottle> LIME_SULFUR_BOTTLE = bottle("lime_sulfur", "Lime Sulfur", LimeSulfurBottle::new);
+
+    // --- registration helpers ---
 
     private static ItemEntry<DrySpongeItem> dry(SpongeItemColor color) {
         String name = color.itemId(false);
@@ -100,6 +108,8 @@ public class CnCleanseItems {
                 .model((ctx, prov) -> prov.generated(ctx, CnCleanse.bottleTexture(fluidName)))
                 .register();
     }
+
+    // --- register ---
 
     public static void register() {
         CnCleanse.LOGGER.info("Register Items...");

@@ -46,14 +46,6 @@ public final class CnCleanseBottleFilling {
         return false;
     }
 
-    public static boolean isBottleFluid(FluidStack stack) {
-        return !stack.isEmpty() && isBottleFluid(stack.getFluid());
-    }
-
-    public static int requiredAmount(FluidStack stack) {
-        return isBottleFluid(stack) ? AMOUNT : -1;
-    }
-
     public static Optional<ItemStack> createFilledBottle(FluidStack fluid) {
         Fluid still = asStill(fluid.getFluid());
         for (Entry e : ENTRIES) {

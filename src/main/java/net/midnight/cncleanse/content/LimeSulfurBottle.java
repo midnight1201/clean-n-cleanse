@@ -27,6 +27,8 @@ public class LimeSulfurBottle extends Item {
         super(properties);
     }
 
+    // --- record ---
+
     public record BottleAction(BlockState newState, SoundEvent blockSound, float volume, float pitch) {
         public static BottleAction of(BlockState state, SoundEvent sound) {
             return new BottleAction(state, sound, 1.0F, 1.0F);
@@ -36,6 +38,8 @@ public class LimeSulfurBottle extends Item {
             return new BottleAction(state, SoundEvents.FIRE_EXTINGUISH, 0.2F, 1.2F);
         }
     }
+
+    // --- use on ---
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
@@ -56,6 +60,8 @@ public class LimeSulfurBottle extends Item {
 
         return InteractionResult.sidedSuccess(level.isClientSide());
     }
+
+    // --- public API ---
 
     public static Optional<BottleAction> resolveAction(BlockState state) {
         if (state.is(Blocks.MYCELIUM)) {
@@ -79,6 +85,8 @@ public class LimeSulfurBottle extends Item {
         level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1f, 1f);
     }
 
+    // --- apply / consume ---
+
     public static void applyAndConsume(
             Level level,
             BlockPos pos,
@@ -93,6 +101,8 @@ public class LimeSulfurBottle extends Item {
         ItemStack result = ItemUtils.createFilledResult(stack, player, new ItemStack(Items.GLASS_BOTTLE));
         player.setItemInHand(hand, result);
     }
+
+    // --- helper ---
 
     private static boolean isWaxedCopper(BlockState state) {
         return DataMapHooks.INVERSE_WAXABLES_DATAMAP.containsKey(state.getBlock());

@@ -12,18 +12,35 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
+import java.util.ArrayDeque;
+import java.util.HashSet;
+
 import static net.minecraft.world.level.block.Block.dropResources;
 
 public final class SpongeAbsorption {
 
+    // --- constants ---
     public static final int BLOCK_RADIUS = 6;
     public static final int BLOCK_LIMIT = 65;
 
-    public static final int ITEM_RADIUS = 2;
-    public static final int ITEM_LIMIT = 16;
+    public static final int ITEMS_PER_BLOCK = 4;
+    public static final int ITEM_LIMIT = BLOCK_LIMIT / ITEMS_PER_BLOCK;
+    private static final double ITEM_RANGE = BLOCK_RADIUS / (double) ITEMS_PER_BLOCK;
+    private static final double ITEM_RANGE_SQR = ITEM_RANGE * ITEM_RANGE;
 
     private SpongeAbsorption() {}
 
+    // --- public API --
+
+    public static boolean absorbFromBlock(Level level, BlockPos spongePos, BlockState spongeState) {
+        return absorbBlock(level, spongePos, spongeState) > 1;
+    }
+    public static boolean wouldAbsorbFromItem(Level level, BlockPos origin, SpongeItemColor color) {
+        return tryAbsorbFromItem(level, origin, color, true);
+    }
+    public static boolean tryAbsorbFromItem(Level level, BlockPos origin, SpongeItemColor color) {
+        return tryAbsorbFromItem(level, origin, color, false);
+    }
     public static boolean isAquaticPlant(BlockState state) {
         return state.is(Blocks.KELP)
                 || state.is(Blocks.KELP_PLANT)
@@ -31,55 +48,70 @@ public final class SpongeAbsorption {
                 || state.is(Blocks.TALL_SEAGRASS);
     }
 
-    public static boolean isInvalidItemOrigin(BlockState state) {
-        return isAquaticPlant(state);
+    // --- block absorption ---
+
+    private static int absorbBlock(Level level, BlockPos origin, BlockState hydrationReference) {
+        return BlockPos.breadthFirstTraversal(
+                origin,
+                BLOCK_RADIUS,
+                BLOCK_LIMIT,
+                SpongeAbsorption::enqueueNeighbors,
+                target -> tryRemoveWater(level, origin, hydrationReference, target, true, false)
+        );
     }
+
+    // --- item absorption ---
+
+    private static boolean tryAbsorbFromItem(Level level, BlockPos origin, SpongeItemColor color, boolean simulate) {
+        if (isAquaticPlant(level.getBlockState(origin))) {
+            return false;
+        }
+        return absorbItem(level, origin, hydrationReference(color), simulate) > 0;
+    }
+    private static int absorbItem(
+            Level level,
+            BlockPos origin,
+            BlockState hydrationReference,
+            boolean simulate) {
+        int absorbed = 0;
+        var queue = new ArrayDeque<BlockPos>();
+        var visited = new HashSet<BlockPos>();
+
+        queue.add(origin);
+        visited.add(origin);
+
+        while (!queue.isEmpty() && absorbed < ITEM_LIMIT) {
+            BlockPos current = queue.poll();
+
+            if (tryRemoveWater(level, origin, hydrationReference, current, false, simulate)) {
+                absorbed++;
+            }
+
+            enqueueNeighbors(current, next -> {
+                if (visited.add(next) && withinItemRange(origin, next)) {
+                    queue.add(next);
+                }
+            });
+        }
+
+        return absorbed;
+    }
+
+    // --- shared ---
 
     public static BlockState hydrationReference(SpongeItemColor color) {
         return color.toBlockColor()
                 .map(c -> c.dry().get().defaultBlockState())
                 .orElse(Blocks.SPONGE.defaultBlockState());
     }
-
-    public static boolean wouldAbsorbFromItem(Level level, BlockPos origin, SpongeItemColor color) {
-        if (isInvalidItemOrigin(level.getBlockState(origin))) {
-            return false;
+    private static void enqueueNeighbors(BlockPos current, java.util.function.Consumer<BlockPos> enqueue) {
+        for (Direction direction : Direction.values()) {
+            enqueue.accept(current.relative(direction));
         }
-        return absorb(level, origin, hydrationReference(color), ITEM_RADIUS, ITEM_LIMIT, false, true) > 0;
     }
-
-    public static boolean absorbFromItem(Level level, BlockPos origin, SpongeItemColor color) {
-        if (isInvalidItemOrigin(level.getBlockState(origin))) {
-            return false;
-        }
-        return absorb(level, origin, hydrationReference(color), ITEM_RADIUS, ITEM_LIMIT, false, false) > 0;
+    private static boolean withinItemRange(BlockPos origin, BlockPos target) {
+        return origin.distSqr(target) <= ITEM_RANGE_SQR;
     }
-
-    public static boolean absorbFromBlock(Level level, BlockPos spongePos, BlockState spongeState) {
-        return absorb(level, spongePos, spongeState, BLOCK_RADIUS, BLOCK_LIMIT, true, false) > 1;
-    }
-
-    private static int absorb(
-            Level level,
-            BlockPos origin,
-            BlockState hydrationReference,
-            int radius,
-            int limit,
-            boolean skipOriginRemoval,
-            boolean simulate) {
-        return BlockPos.breadthFirstTraversal(
-                origin,
-                radius,
-                limit,
-                (current, enqueue) -> {
-                    for (Direction direction : Direction.values()) {
-                        enqueue.accept(current.relative(direction));
-                    }
-                },
-                target -> tryRemoveWater(level, origin, hydrationReference, target, skipOriginRemoval, simulate)
-        );
-    }
-
     private static boolean tryRemoveWater(
             Level level,
             BlockPos spongePos,

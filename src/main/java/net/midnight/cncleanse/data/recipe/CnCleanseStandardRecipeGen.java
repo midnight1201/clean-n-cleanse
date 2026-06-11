@@ -54,13 +54,14 @@ public class CnCleanseStandardRecipeGen extends RecipeProvider {
                 .save(out, CnCleanse.asResource("crafting/sponge/" + name + "_from_items"));
     }
 
+    private void smeltWetToDry(RecipeOutput out, ItemLike dry, ItemLike wet, String name) {
+        smelt(out, wet, dry, "sponge/" + name + "_from_wet");
+    }
+
     private void smelt(RecipeOutput out, ItemLike input, ItemLike result, String name) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(input), RecipeCategory.MISC, result, 0.15f, 200)
                 .unlockedBy("has_" + name, has(input))
                 .save(out, CnCleanse.asResource("smelting/" + name));
-    }
-    private void smeltWetToDry(RecipeOutput out, ItemLike dry, ItemLike wet, String name) {
-        smelt(out, wet, dry, "sponge/" + name + "_from_wet");
     }
 
 

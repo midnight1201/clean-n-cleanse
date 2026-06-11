@@ -25,6 +25,8 @@ public final class CnCleanseDispenserBehaviors {
 
     private CnCleanseDispenserBehaviors() {}
 
+    // --- registration ---
+
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
@@ -38,6 +40,9 @@ public final class CnCleanseDispenserBehaviors {
             }
         });
     }
+
+    // --- lime sulfur behavior ---
+
     private static final class LimeSulfurDispenseBehavior extends OptionalDispenseItemBehavior {
         @Override
         protected ItemStack execute(BlockSource source, ItemStack stack) {
@@ -55,6 +60,8 @@ public final class CnCleanseDispenserBehaviors {
             return replaceOne(source, stack, new ItemStack(Items.GLASS_BOTTLE));
         }
     }
+
+    // --- wet sponge behavior ---
 
     private static final class WetSpongeDispenseBehavior extends OptionalDispenseItemBehavior {
         @Override
@@ -79,6 +86,9 @@ public final class CnCleanseDispenserBehaviors {
             return replaceOne(source, stack, dry);
         }
     }
+
+    // --- stack utilities ---
+
     private static void insertOrDrop(BlockSource source, ItemStack stack) {
         if (stack.isEmpty()) {
             return;

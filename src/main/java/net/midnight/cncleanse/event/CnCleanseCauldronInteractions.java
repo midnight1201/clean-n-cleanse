@@ -21,6 +21,8 @@ import org.jetbrains.annotations.Nullable;
 public final class CnCleanseCauldronInteractions {
     private CnCleanseCauldronInteractions() {}
 
+    // --- cauldron state transitions ---
+
     @Nullable
     public static BlockState getNextStateForDeposit(BlockState state) {
         if (state.is(Blocks.CAULDRON)) {
@@ -48,6 +50,8 @@ public final class CnCleanseCauldronInteractions {
                 : state.setValue(LayeredCauldronBlock.LEVEL, current - 1);
     }
 
+    // --- interaction factories  ---
+
     public static CauldronInteraction deposit(SpongeItemColor color) {
         return (state, level, pos, player, hand, stack) ->
                 interactDeposit(state, level, pos, player, hand, stack, color);
@@ -57,6 +61,8 @@ public final class CnCleanseCauldronInteractions {
         return (state, level, pos, player, hand, stack) ->
                 interactTake(state, level, pos, player, hand, stack, color);
     }
+
+    // --- handlers ---
 
     private static ItemInteractionResult interactDeposit(
             BlockState state,

@@ -51,7 +51,7 @@ public class DrySpongeItem extends Item {
         if (level.isClientSide()) {
             return InteractionResultHolder.sidedSuccess(held, true);
         }
-        if (!SpongeAbsorption.absorbFromItem(level, pos, color)) {
+        if (!SpongeAbsorption.tryAbsorbFromItem(level, pos, color)) {
             return InteractionResultHolder.fail(held);
         }
 

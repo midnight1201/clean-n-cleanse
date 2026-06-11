@@ -37,17 +37,17 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
     }
 
     GeneratedRecipe
-            WET_WHITE_SPONGE = fillItem(SpongeItemColor.WHITE),
-            WET_RED_SPONGE = fillItem(SpongeItemColor.RED),
-            WET_YELLOW_SPONGE = fillItem(SpongeItemColor.YELLOW),
-            WET_LIME_SPONGE = fillItem(SpongeItemColor.LIME),
-            WET_LIGHT_BLUE_SPONGE = fillItem(SpongeItemColor.LIGHT_BLUE),
+            WET_WHITE_SPONGE = fillSpongeItem(SpongeItemColor.WHITE),
+            WET_RED_SPONGE = fillSpongeItem(SpongeItemColor.RED),
+            WET_YELLOW_SPONGE = fillSpongeItem(SpongeItemColor.YELLOW),
+            WET_LIME_SPONGE = fillSpongeItem(SpongeItemColor.LIME),
+            WET_LIGHT_BLUE_SPONGE = fillSpongeItem(SpongeItemColor.LIGHT_BLUE),
 
-            WET_WHITE_SPONGE_BLOCK = fillBlock(SpongeItemColor.WHITE),
-            WET_RED_SPONGE_BLOCK = fillBlock(SpongeItemColor.RED),
-            WET_YELLOW_SPONGE_BLOCK = fillBlock(SpongeItemColor.YELLOW),
-            WET_LIME_SPONGE_BLOCK = fillBlock(SpongeItemColor.LIME),
-            WET_LIGHT_BLUE_SPONGE_BLOCK = fillBlock(SpongeItemColor.LIGHT_BLUE),
+            WET_WHITE_SPONGE_BLOCK = fillSpongeBlock(SpongeItemColor.WHITE),
+            WET_RED_SPONGE_BLOCK = fillSpongeBlock(SpongeItemColor.RED),
+            WET_YELLOW_SPONGE_BLOCK = fillSpongeBlock(SpongeItemColor.YELLOW),
+            WET_LIME_SPONGE_BLOCK = fillSpongeBlock(SpongeItemColor.LIME),
+            WET_LIGHT_BLUE_SPONGE_BLOCK = fillSpongeBlock(SpongeItemColor.LIGHT_BLUE),
 
             CAUSTIC_SODA_BOTTLE = fillBottle("caustic_soda",
                     CnCleanseFluids.CAUSTIC_SODA.get(),
@@ -67,20 +67,24 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
 
             STERILIZE_MYCELIUM = sterilizeMycelium();
 
-    private GeneratedRecipe fillItem(SpongeItemColor color) {
+    // --- sponge helpers ---
+
+    private GeneratedRecipe fillSpongeItem(SpongeItemColor color) {
         String name = color.name().toLowerCase();
         return create("fill_" + name + "_sponge", b -> b
                 .require(Fluids.WATER, SPONGE_WATER_PER_ITEM)
                 .require(color.dry().get())
                 .output(color.wet().get()));
     }
-    private GeneratedRecipe fillBlock(SpongeItemColor color) {
+    private GeneratedRecipe fillSpongeBlock(SpongeItemColor color) {
         String name = color.name().toLowerCase();
         return create("fill_" + name + "_sponge_block", b -> b
                 .require(Fluids.WATER, SPONGE_WATER_PER_BLOCK)
                 .require(color.dryBlock())
                 .output(color.wetBlock()));
     }
+
+    // --- bottle helpers ---
 
     private GeneratedRecipe fillBottle(String fluidName, FlowingFluid fluid, ItemLike bottle) {
         return create("fill_" + fluidName + "_bottle", b -> b
@@ -89,12 +93,17 @@ public class CnCleanseFillingRecipeGen extends FillingRecipeGen {
                 .output(bottle));
     }
 
+    // --- world helpers ---
+
     private GeneratedRecipe sterilizeMycelium() {
         return create("sterilize_mycelium", b -> b
                 .require(CnCleanseFluids.LIME_SULFUR.get(), BOTTLE_AMOUNT)
                 .require(Blocks.MYCELIUM)
                 .output(Blocks.DIRT));
     }
+
+    // --- copper oxidation ---
+
     private void oxidizeCopper(Block from, Block to) {
         String name = BuiltInRegistries.BLOCK.getKey(from).getPath();
         create("oxidize_" + name, b -> b
