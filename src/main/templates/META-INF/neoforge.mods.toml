@@ -1,13 +1,16 @@
 modLoader = "javafml"
 loaderVersion = "${loader_version_range}"
+issueTrackerURL = "https://github.com/midnight1201/clean-n-cleanse/issues"
 license = "${mod_license}"
 
 [[mods]]
 modId = "${mod_id}"
 version = "${mod_version}"
 displayName = "${mod_name}"
+displayURL = "https://modrinth.com/mod/clean-n-cleanse"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
+logoFile = "icon.png"
 
 [[mixins]]
 config = "${mod_id}.mixins.json"
@@ -36,6 +39,7 @@ side = "BOTH"
 [[dependencies.${mod_id}]]
 modId = "vanillabackport"
 type = "optional"
+reason = "Versions before 1.1.7 don't add sulfur blocks!"
 versionRange = "[1.1.7,)"
 ordering = "NONE"
 side = "BOTH"

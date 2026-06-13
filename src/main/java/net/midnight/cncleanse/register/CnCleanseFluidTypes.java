@@ -26,9 +26,9 @@ public final class CnCleanseFluidTypes {
     public static final class FluidTints {
         private FluidTints() {}
 
-        public static final int CAUSTIC_SODA = 0xE8F4FF;
-        public static final int CARBON_DISULFIDE = 0xE8D020;
-        public static final int LIME_SULFUR = 0xC4A574;
+        public static final int CAUSTIC_SODA = 0xFFFFFF;
+        public static final int CARBON_DISULFIDE = 0xE9E92D;
+        public static final int LIME_SULFUR = 0xB9754E;
     }
 
     public static final ResourceLocation WATER_STILL =
