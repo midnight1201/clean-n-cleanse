@@ -37,6 +37,13 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]
+modId = "jei"
+type = "optional"
+versionRange = "[19,)"
+ordering = "AFTER"
+side = "CLIENT"
+
+[[dependencies.${mod_id}]]
 modId = "vanillabackport"
 type = "optional"
 reason = "Versions before 1.1.7 don't add sulfur blocks!"
