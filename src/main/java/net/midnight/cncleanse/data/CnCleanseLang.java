@@ -94,7 +94,8 @@ public final class CnCleanseLang {
 
     public static String tagKey(TagKey<?> tag, String registryType) {
         ResourceLocation id = tag.location();
-        return "tag." + registryType + "." + id.getNamespace() + "." + id.getPath();
+        String path = id.getPath().replace('/', '.');
+        return "tag." + registryType + "." + id.getNamespace() + "." + path;
     }
 
     private static void addTooltipSummary(RegistrateLangProvider prov, String base, String summary) {

@@ -50,3 +50,15 @@ reason = "Versions before 1.1.7 don't add sulfur blocks!"
 versionRange = "[1.1.7,)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.cncleanse]]
+modId = "create_sa"
+type = "optional"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.cncleanse]]
+modId = "create_aquatic_ambitions"
+type = "optional"
+ordering = "AFTER"
+side = "BOTH"

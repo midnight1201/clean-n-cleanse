@@ -1,0 +1,9 @@
+{
+  "neoforge:conditions": [
+    { "type": "neoforge:false" }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [ { "item": "minecraft:stone" } ],
+  "result": { "id": "minecraft:stone", "count": 1 }
+}
