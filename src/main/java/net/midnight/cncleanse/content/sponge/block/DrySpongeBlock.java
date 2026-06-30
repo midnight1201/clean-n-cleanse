@@ -17,6 +17,10 @@ public class DrySpongeBlock extends SpongeBlock {
         this.color = color;
     }
 
+    public BlockState wetState() {
+        return color.wetState();
+    }
+
     @Override
     protected void tryAbsorbWater(Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);

@@ -8,7 +8,9 @@
     "SpongeSmelting",
     "BasinSpongeDrain",
     "GenericItemFilling",
-    "BasinSpongeItem"
+    "BasinSpongeItem",
+    "FallingSpongeAbsorbs",
+    "FallingBlockInvoker"
   ],
   "client": [],
   "injectors": {

@@ -1,16 +1,20 @@
 package net.midnight.cncleanse.data;
 
+import com.simibubi.create.api.registry.CreateRegistries;
 import net.midnight.cncleanse.CnCleanse;
 import net.midnight.cncleanse.data.recipe.CnCleanseStandardRecipeGen;
 import net.midnight.cncleanse.data.recipe.create.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = CnCleanse.ID)
@@ -41,5 +45,10 @@ public class CnCleanseDatagen {
             generator.addProvider(true, blockTags);
             generator.addProvider(true, new CnCleanseCompatTagGen.Items(
                 output, lookup, blockTags.contentsGetter(), existingFileHelper));
+
+        RegistrySetBuilder registries = new RegistrySetBuilder()
+                .add(CreateRegistries.POTATO_PROJECTILE_TYPE, CnCleansePotatoProjectiles::bootstrap);
+        generator.addProvider(event.includeServer(),
+                new DatapackBuiltinEntriesProvider(output, lookup, registries, Set.of(CnCleanse.ID)));
     }
 }

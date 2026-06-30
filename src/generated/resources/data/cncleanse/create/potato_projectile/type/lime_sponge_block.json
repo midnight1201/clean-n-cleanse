@@ -1,0 +1,21 @@
+{
+  "damage": 2,
+  "drag": 0.95,
+  "drop_stack": {
+    "count": 1,
+    "id": "cncleanse:lime_sponge_block"
+  },
+  "gravity_multiplier": 0.85,
+  "items": "cncleanse:lime_sponge_block",
+  "knockback": 0.3,
+  "on_block_hit": {
+    "type": "create:place_block_on_ground",
+    "block": "cncleanse:lime_sponge_block"
+  },
+  "reload_ticks": 12,
+  "render_mode": {
+    "type": "create:tumble"
+  },
+  "sound_pitch": 1.2,
+  "velocity_multiplier": 1.1
+}
