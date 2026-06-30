@@ -1,6 +1,5 @@
 package net.midnight.cncleanse.mixin;
 
-import com.simibubi.create.content.fluids.transfer.GenericItemFilling;
 import net.midnight.cncleanse.content.CnCleanseBottleFilling;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -12,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 
-@Mixin(value = GenericItemFilling.class, remap = false)
-public class GenericItemFillingMixin {
+@Mixin(value = com.simibubi.create.content.fluids.transfer.GenericItemFilling.class, remap = false)
+public class GenericItemFilling {
 
     @ModifyReturnValue(
             method = "canFillGlassBottleInternally",
